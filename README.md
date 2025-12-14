@@ -1,33 +1,92 @@
 # Box Packing Optimizer
 
-A small SymPy/NumPy/Matplotlib script that computes an optimal rectangular box to hold a set of user-provided items and visualizes the result in 3D. The script asks for item weights/volumes, solves for minimal surface area given fixed total volume using Lagrange multipliers, then plots both the container box and the individual item boxes.
+A Python application that computes the optimal rectangular box dimensions to hold a set of user-provided items using symbolic optimization. The tool uses Lagrange multipliers to minimize surface area under a volume constraint and visualizes results in 3D.
+
+## Status
+
+**Archived / Refactored**
 
 ## Features
-- Interactive CLI prompts for box weight capacity and item weights/volumes.
-- Symbolic optimization with SymPy to minimize surface area under a volume constraint.
-- Numerical evaluation of the optimal dimensions.
-- 3D visualization of the container edges and individual item boxes using Matplotlib.
 
-## Tech Stack
-- Python
+- Interactive CLI for entering box weight capacity and item specifications
+- Symbolic optimization using SymPy to minimize surface area under volume constraints
+- Lagrange multiplier method for constrained optimization
+- Numerical evaluation of optimal dimensions
+- 3D visualization of the container and individual item boxes using Matplotlib
+
+## Project Structure
+
+```
+box-packing-optimizer/
+├── main.py              # Main entry point script
+├── requirements.txt     # Python dependencies
+├── README.md            # Project documentation
+├── LICENSE              # MIT License
+├── CONTRIBUTING.md      # Contribution guidelines
+├── CHANGELOG.md         # Version history
+├── .editorconfig        # Editor configuration
+└── .gitignore           # Git ignore rules
+```
+
+## Requirements
+
+- Python 3.9+
 - sympy
 - numpy
 - matplotlib
 
 ## Installation
-1. Ensure Python 3.9+ is installed.
-2. Install dependencies:
+
+1. Clone the repository:
    ```bash
-   pip install sympy numpy matplotlib
+   git clone https://github.com/ApatheticMioz/mt1008-project-a.git
+   cd mt1008-project-a
+   ```
+
+2. (Optional) Create a virtual environment:
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # On Windows: venv\Scripts\activate
+   ```
+
+3. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
    ```
 
 ## Usage
-Run the main script from the project root:
-```bash
-python 232523_232577_232536_MT1008_Project_A_Code.py
-```
-Follow the prompts to enter box capacity, number of items, and each item's weight and volume. The script prints optimal dimensions and opens 3D plots.
 
-## Notes
-- The script currently ignores weight in the optimization and only constrains by volume; ensure provided total weight does not exceed the capacity check.
-- Both provided `.py` files contain identical logic; use the `232523_232577_232536_MT1008_Project_A_Code.py` entry point.
+Run the main script:
+
+```bash
+python main.py
+```
+
+Follow the interactive prompts to:
+
+1. Enter the box weight capacity
+2. Specify the number of items
+3. For each item, enter its weight and volume
+
+The script will:
+- Validate that total item weight doesn't exceed capacity
+- Calculate optimal box dimensions using Lagrange multipliers
+- Display the solution (x, y, z dimensions)
+- Generate 3D visualizations of the container and item arrangement
+
+## How It Works
+
+The optimizer uses Lagrange multipliers to solve the following constrained optimization problem:
+
+- **Objective**: Minimize surface area: `f = 2xy + 2xz + 2yz`
+- **Constraint**: Fixed total volume: `g = xyz - V = 0`
+
+The solution yields cubic dimensions (x = y = z) for the optimal box shape.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Contributing
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines on how to contribute to this project.

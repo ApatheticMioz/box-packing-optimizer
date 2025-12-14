@@ -49,3 +49,27 @@ Thumbs.db
 # Environment variables
 .env
 *.env
+
+# Compiled binaries
+*.exe
+*.o
+*.out
+*.dll
+*.so
+*.dylib
+
+# Node.js (if applicable)
+node_modules/
+
+# Archives
+*.zip
+*.rar
+*.7z
+*.tar.gz
+*.tar
+
+# Logs
+*.log
+
+# Local configuration
+*.local
